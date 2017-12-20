@@ -321,7 +321,7 @@ input[type="text"]:focus {
 	z-index: 10000;
 }
 .overlay h2 {
-	font-size: calc(18px + 1vw);
+	font-size: calc(18px + 0.95vw);
 	margin: 40px 0;
 	letter-spacing: -0.5px;
 }
