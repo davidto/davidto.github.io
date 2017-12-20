@@ -1,4 +1,4 @@
-// ProntoWeather Forecast Application that's powered by the Yahoo Weather API and features the ability to retreive weather based on current location or search.
+// ProntoWeather Forecast Application that's powered by the Yahoo Weather API and features the ability to retrieve weather based on current location or search.
 // Designed and developed by David To
 
 const prontoWeather = {};
