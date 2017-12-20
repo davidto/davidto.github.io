@@ -325,10 +325,25 @@ input[type="text"]:focus {
 	margin: 40px 0;
 	letter-spacing: -0.5px;
 }
-
+.error-msg {
+	line-height: 1.4;
+	padding-top: 15px;
+	display: none;
+}
 
 /* Footer */
+.footer {
+	color: #fff;
+}
+.footer span {
+	display: inline-block;
+	padding-bottom: 10px;
+}
 .footer a {
+	color: inherit;
+	text-decoration: underline;
+}
+.footer .credit {
 	float: right;
 	display: inline-block;
 }

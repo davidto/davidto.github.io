@@ -98,7 +98,16 @@ prontoWeather.getWeather = () => {
 	})
 	.then(function(res){
 		// console.log(res);
-		prontoWeather.displayWeather(res.query.results.channel);
+		if (!res.query.results) {
+			$('#loading.animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+				prontoWeather.displayModal('#loading', 'hide');
+				prontoWeather.displayModal('#location-settings', 'show');
+				$('.error-msg').addClass('show');
+			});
+		} else {
+			$('.error-msg').removeClass('show');
+			prontoWeather.displayWeather(res.query.results.channel);			
+		}
 	})
 	.catch(function(err){
 		prontoWeather.displayModal('#location-settings', 'show');
