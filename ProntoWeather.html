@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>ProntoWeather</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+	<body>
+		<div id="loading" class="overlay show">
+			<div class="container">
+				<i class="fa fa-refresh fa-spin fa-5x fa-fw"></i>
+				<span class="sr-only">Loading...</span>
+				<h2>Retreiving your weather forecast</h2>
+			</div>
+		</div>
+		<div id="location-settings" class="overlay hide">
+			<div class="container">
+				<h2>Enter your city and region or postal code</h2>
+				<form id="inputAddress">
+					<div class="input-group">
+						<div class="group-item">
+							<input id="inputPlace" type="text" placeholder="e.g. Toronto, ON or M4S 1Z2" required>
+						</div>
+						<div class="group-item">
+							<input id="inputAddressSubmit" class="btn input-group-btn" type="submit" value="Search">
+						</div>
+						<div class="group-item">
+							<a id="getLocation" class="btn input-group-addon" href="#" title="Get Current Location"><img src="images/icons/static/gps-fixed-indicator.svg" alt="Get Current Location"></a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>	
+		<div id="wrapper-weather">	
+			<div class="container">
+				<div class="widget weather-widget">
+					<div class="weather-widget-today">
+						<div class="widget-title">
+							<h3><i class="fa fa-map-marker"></i> <span class="city-name"></span> <a href="#" title="Settings" class="widget-settings"><span class="fa fa-cog"></span></a></h3>
+						</div>
+						<div class="widget-content">
+							<div class="col-6">
+								<div class="wrapper-weather-icon">
+									<div class="animated weather-icon"></div>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="weather-content">
+									<h1 class="temp"><span class="temp-int"></span><sup class="degrees">&#176;<span class="unit"></span></sup></h1>
+									<h2 class="weather-condition"></h2>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="widget weather-weekly">
+					<div class="widget-title">
+						<h3>10 Day Forecast</h3>
+					</div>
+					<div class="weather-forecast">
+						<div class="clear"></div>
+					</div>
+					<p class="weather-update">Last Updated: <span class="date-time"></span></p>
+					<div class="clear"></div>
+				</div>
+				<div class="footer">
+					<a href="https://www.yahoo.com/?ilc=401" target="_blank"> <img src="https://poweredby.yahoo.com/white.png" width="134" height="29"/> </a>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="js/app.min.js"></script>
+		<!-- AMCHARTS weather icons - https://www.amcharts.com/free-animated-svg-weather-icons/ -->
+	</body>
+</html>
+<!-- Designed and developed by David To -->

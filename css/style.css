@@ -1,0 +1,500 @@
+/* 
+	Designed and developed by David To
+*/
+
+/* Reset Default Styles*/
+/* http://meyerweb.com/eric/tools/css/reset/ */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Reset */
+html, body {
+	height: 100%;
+}
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	background-color: #333;
+	color: #fff;
+}
+body:before {
+	background-image: url('../images/bg.jpg');
+	background-size: cover;
+	background-repeat: none;
+    content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+*, *:after, *:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* Grid */
+.container {
+	margin: 5vh auto;
+	position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.container:before, .row:before, .weather-icon:before, .container:after, .row:after, .weather-icon:after {
+    display: table;
+    content: " ";
+}
+.container:after, .row:after, .weather-icon:after {
+    clear: both;
+}
+.col-6, .col-7, .col-5, .day {
+	float: left;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+}
+.col-7 {
+    width: 58.33333333%;
+}
+.col-6 {
+    width: 50%;
+}
+.col-5 {
+    width: 41.66666667%;
+}
+
+/* Typography */
+.temp {
+	font-size: 72px;
+	font-weight: normal;
+	margin: 0;
+}
+.temp .degrees {
+	font-size: 0.45em;
+	vertical-align: super;
+}
+.weather-condition {
+	font-size: 38px;
+	font-weight: bold;
+	letter-spacing: -0.5px;
+}
+
+/* Widget Styles */
+#wrapper-weather {
+	display: none;
+}
+.widget {
+	float: left;
+	background: rgba(0,0,0,0.5);
+	width: 100%;
+	padding: 3%;
+	margin-bottom: 15px;
+	position: relative;
+	z-index: 1000;
+}
+.widget a, .widget a:link, .widget a:visited {
+	color: #fff;
+	-webkit-transition: all 300ms ease;
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+.widget a:hover, .widget a:focus {
+	color: rgba(146, 193, 246, 1);	
+}
+.weather-widget .widget-content {
+	display: table;
+	width: 100%;
+}
+.weather-widget .col-6 {
+	display: table-cell;
+	float: none;
+	vertical-align: middle;
+}
+.wrapper-weather-icon {
+	margin: -5%;
+}
+.weather-icon {
+	transform: translateZ(0);
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 100%;
+	padding-top: 100%;
+}
+.widget-title {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #fff;
+}
+.widget-title h3 {
+	margin: 0;
+	padding: 0;
+}
+.widget-settings {
+	float: right;
+	margin-left: 5px;
+}
+.widget-settings .fa {
+	font-size: 1.1em;
+}
+.weather-update {
+	color: rgba(255,255,255,0.8);
+	font-size: 0.9em;
+	float: left;
+	width: 100%;
+	padding-top: 10px;
+}
+
+/* General Styles */
+.hide {
+	display: none !important;
+}
+.show {
+	display: block !important;
+}
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    width: 100%;
+}
+.input-group .group-item {
+    display: table-cell;
+    vertical-align: middle;
+}
+.input-group .group-item:not(:first-child) {
+	width: 1%;
+}
+.input-group input[type="text"] {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+}
+#inputAddressSubmit {
+	border-left: 0 none;
+}
+#getLocation {
+	margin-left: 10px;
+}
+.input-group-addon img {
+	width: 18px;
+}
+.input-group-addon, .btn {
+	background: transparent;
+    display: inline-block;
+    padding: 8px 12px;
+    margin-bottom: 0;
+    height: 38px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid #fff;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+}
+input[type="text"] {
+	background: transparent;
+	color: #fff;
+    display: block;
+    width: 100%;
+    height: 38px;
+    padding: 8px 12px;
+    font-size: 16px;
+    line-height: 1.4;
+    border: 1px solid #fff;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+input[type="text"]:focus {
+    border-color: rgba(255,255,255,0.8);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255,255,255,0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255,255,255,0.6);
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	color: rgba(255,255,255,0.7);
+}
+::-moz-placeholder { /* Firefox 19+ */
+	color: rgba(255,255,255,0.7);
+}
+:-ms-input-placeholder { /* IE 10+ */
+	color: rgba(255,255,255,0.7);
+}
+:-moz-placeholder { /* Firefox 18- */
+	color: rgba(255,255,255,0.7);
+}
+
+/* 10 day forecast */
+.weather-weekly .day {
+	border-bottom: 1px solid rgba(255,255,255,0.5);
+	padding-top: 5%;
+	padding-bottom: 5%;
+	width: 20%;
+	text-align: center;
+}
+.temp-all span {
+	display: inline-block;
+	padding: 0 5%;
+}
+.temp-high {
+	/*font-weight: bold;*/
+}
+.temp-high:before {
+	color: rgba(255, 255, 255, 0.5);
+	content: 'H ';
+}
+.temp-low {
+	color: rgba(146, 193, 246, 1);
+}
+.temp-low:before {
+	color: rgba(146, 193, 246, 0.6);
+	content: 'L ';
+}
+
+/* Overlays */
+.overlay {
+	background-color: #5aa1eb;
+	display: none;
+	width: 100%;
+	height: 100%;
+	padding: 25vh 0;
+	top: 0;
+	left: 0;
+	position: fixed;
+	text-align: center;
+	z-index: 10000;
+}
+.overlay h2 {
+	font-size: calc(18px + 1vw);
+	margin: 40px 0;
+	letter-spacing: -0.5px;
+}
+
+
+/* Footer */
+.footer a {
+	float: right;
+	display: inline-block;
+}
+
+/* Media Queries */
+@media screen and (max-width: 700px) {
+	.day {
+		padding-left: 1%;
+	    padding-right: 1%;
+	}
+	.day h3, .temp-all span {
+		font-size: 2.5vw;
+	}
+}
+@media screen and (max-width: 799px) {
+	.overlay {
+		padding-left: 8vw;
+		padding-right: 8vw;
+	}
+	.container {
+		margin: 15px 0;
+	}
+	.temp {
+		font-size: 11vw;
+	}
+	.weather-condition {
+		font-size: 5.3vw;
+		margin-bottom: 3vw;
+	}
+	.widget-title {
+		padding-bottom: 3%;
+	}
+}
+@media screen and (min-width: 800px) {
+    .container {
+        width: 700px;
+    }
+}
+
+/*--------------- 
+Weather Icons 
+Condition codes - https://developer.yahoo.com/weather/documentation.html#codes
+---------------*/
+
+/* thunder */
+.icon-0, .icon-1, .icon-2, .icon-3, .icon-4, .icon-37, .icon-38, .icon-39, .icon-45, .icon-47 {
+	background-image: url('../images/icons/static/thunder.svg');
+}
+/* hail */
+.icon-5, .icon-6, .icon-7, .icon-8, .icon-10, .icon-17, .icon-18, .icon-35 {
+	background-image: url('../images/icons/static/rainy-7.svg');
+}
+/* drizzle */
+.icon-9 {
+	background-image: url('../images/icons/static/rainy-4.svg');
+}
+/* scattered showers */
+.icon-40 {
+	background-image: url('../images/icons/static/rainy-5.svg');
+}
+/* showers */
+.icon-11, .icon-12 {
+	background-image: url('../images/icons/static/rainy-6.svg');
+}
+/* snow flurries */
+.icon-13 {
+	background-image: url('../images/icons/static/snowy-4.svg');
+}
+/* snow showers */
+.icon-14, .icon-42, .icon-46 {
+	background-image: url('../images/icons/static/snowy-5.svg');
+}
+/* heavy snow */
+.icon-15, .icon-16, .icon-41, .icon-43 {
+	background-image: url('../images/icons/static/snowy-6.svg');
+}
+/* cloudy */
+.icon-19, .icon-20, .icon-21, .icon-22, .icon-23, .icon-24, .icon-25, .icon-26, .icon-44 {
+	background-image: url('../images/icons/static/cloudy.svg');
+}
+/* mostly cloudy (night) */
+.icon-27 {
+	background-image: url('../images/icons/static/cloudy-night-2.svg');
+}
+/* mostly cloudy (day) */
+.icon-28 {
+	background-image: url('../images/icons/static/cloudy-day-2.svg');
+}
+/* partly cloudy (night) */
+.icon-29 {
+	background-image: url('../images/icons/static/cloudy-night-1.svg');
+}
+/* partly cloudy (day) */
+.icon-30 {
+	background-image: url('../images/icons/static/cloudy-day-1.svg');
+}
+/* clear (night) */
+.icon-31, .icon-33 {
+	background-image: url('../images/icons/static/night.svg');
+}
+/* sunny */
+.icon-32, .icon-34, .icon-36 {
+	background-image: url('../images/icons/static/day.svg');
+}
+
+/*--------------- 
+Animated Weather Icons
+---------------*/
+
+/* thunder */
+.animated#icon-0, .animated#icon-1, .animated#icon-2, .animated#icon-3, .animated#icon-4, .animated#icon-37, .animated#icon-38, .animated#icon-39, .animated#icon-45, .animated#icon-47 {
+	background-image: url('../images/icons/animated/thunder.svg');
+}
+/* hail */
+.animated#icon-5, .animated#icon-6, .animated#icon-7, .animated#icon-8, .animated#icon-10, .animated#icon-17, .animated#icon-18, .animated#icon-35 {
+	background-image: url('../images/icons/animated/rainy-7.svg');
+}
+/* drizzle */
+.animated#icon-9 {
+	background-image: url('../images/icons/animated/rainy-4.svg');
+}
+/* scattered showers */
+.animated#icon-40 {
+	background-image: url('../images/icons/animated/rainy-5.svg');
+}
+/* showers */
+.animated#icon-11, .animated#icon-12 {
+	background-image: url('../images/icons/animated/rainy-6.svg');
+}
+/* snow flurries */
+.animated#icon-13 {
+	background-image: url('../images/icons/animated/snowy-4.svg');
+}
+/* snow showers */
+.animated#icon-14, .animated#icon-42, .animated#icon-46 {
+	background-image: url('../images/icons/animated/snowy-5.svg');
+}
+/* heavy snow */
+.animated#icon-15, .animated#icon-16, .animated#icon-41, .animated#icon-43 {
+	background-image: url('../images/icons/animated/snowy-6.svg');
+}
+/* cloudy */
+.animated#icon-19, .animated#icon-20, .animated#icon-21, .animated#icon-22, .animated#icon-23, .animated#icon-24, .animated#icon-25, .animated#icon-26, .animated#icon-44 {
+	background-image: url('../images/icons/animated/cloudy.svg');
+}
+/* mostly cloudy (night) */
+.animated#icon-27 {
+	background-image: url('../images/icons/animated/cloudy-night-2.svg');
+}
+/* mostly cloudy (day) */
+.animated#icon-28 {
+	background-image: url('../images/icons/animated/cloudy-day-2.svg');
+}
+/* partly cloudy (night) */
+.animated#icon-29 {
+	background-image: url('../images/icons/animated/cloudy-night-1.svg');
+}
+/* partly cloudy (day) */
+.animated#icon-30 {
+	background-image: url('../images/icons/animated/cloudy-day-1.svg');
+}
+/* clear (night) */
+.animated#icon-31, .animated#icon-33 {
+	background-image: url('../images/icons/animated/night.svg');
+}
+/* sunny */
+.animated#icon-32, .animated#icon-34, .animated#icon-36 {
+	background-image: url('../images/icons/animated/day.svg');
+}
