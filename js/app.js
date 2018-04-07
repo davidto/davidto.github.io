@@ -100,13 +100,15 @@ prontoWeather.getWeather = () => {
 		// console.log(res);
 		if (!res.query.results) {
 			$('#loading.animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-				prontoWeather.displayModal('#loading', 'hide');
-				prontoWeather.displayModal('#location-settings', 'show');
 				$('.error-msg').addClass('show');
+				prontoWeather.displayModal('#loading', 'hide');
+				$('#loading.animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+					prontoWeather.displayModal('#location-settings', 'show');
+				});
 			});
 		} else {
 			$('.error-msg').removeClass('show');
-			prontoWeather.displayWeather(res.query.results.channel);			
+			prontoWeather.displayWeather(res.query.results.channel);
 		}
 	})
 	.catch(function(err){
