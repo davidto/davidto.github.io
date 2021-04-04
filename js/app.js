@@ -143,12 +143,12 @@ prontoWeather.init = () => {
 
 	prontoWeather.getLocation();
 
-	$('.widget-settings').on('click', function(e){
+	$('.widget-settings').on('click touchstart', function(e){
 		e.preventDefault();
 		prontoWeather.displayModal('#location-settings', 'show');
 	});
 
-	$('#getLocation').on('click', function(e){
+	$('#getLocation').on('click touchstart', function(e){
 		e.preventDefault();
 		prontoWeather.displayModal('#loading', 'show');
 		prontoWeather.displayModal('#location-settings', 'hide');
