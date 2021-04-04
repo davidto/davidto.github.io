@@ -110,7 +110,6 @@ prontoWeather.getWeather = (manualSearch = false) => {
 			format: 'json'
 		},
 		success: function(data, textStatus, XMLHttpRequest){
-			console.log(data);
 			if (data) {
 				$('.error-msg').removeClass('show');
 				prontoWeather.displayWeather(data);
