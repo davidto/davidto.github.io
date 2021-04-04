@@ -59,7 +59,7 @@ body {
 	color: #fff;
 }
 body:before {
-	background-image: url('../images/bg.jpg');
+	background-image: url(../images/bg.jpg);
 	background-size: cover;
 	background-repeat: none;
     content: '';
@@ -401,47 +401,47 @@ Condition codes - https://developer.yahoo.com/weather/documentation.html#codes
 
 /* thunder */
 .icon-11d {
-	background-image: url('../images/icons/static/thunder.svg');
+	background-image: url(../images/icons/static/thunder.svg);
 }
 /* scattered showers */
 .icon-10d {
-	background-image: url('../images/icons/static/rainy-5.svg');
+	background-image: url(../images/icons/static/rainy-5.svg);
 }
 /* showers */
 .icon-09d {
-	background-image: url('../images/icons/static/rainy-6.svg');
+	background-image: url(../images/icons/static/rainy-6.svg);
 }
 /* heavy snow */
 .icon-13d {
-	background-image: url('../images/icons/static/snowy-6.svg');
+	background-image: url(../images/icons/static/snowy-6.svg);
 }
 /* cloudy */
 .icon-03d, .icon-03n, .icon-50d {
-	background-image: url('../images/icons/static/cloudy.svg');
+	background-image: url(../images/icons/static/cloudy.svg);
 }
 /* mostly cloudy (night) */
 .icon-04n {
-	background-image: url('../images/icons/static/cloudy-night-2.svg');
+	background-image: url(../images/icons/static/cloudy-night-2.svg);
 }
 /* mostly cloudy (day) */
 .icon-04d {
-	background-image: url('../images/icons/static/cloudy-day-2.svg');
+	background-image: url(../images/icons/static/cloudy-day-2.svg);
 }
 /* partly cloudy (night) */
 .icon-02n {
-	background-image: url('../images/icons/static/cloudy-night-1.svg');
+	background-image: url(../images/icons/static/cloudy-night-1.svg);
 }
 /* partly cloudy (day) */
 .icon-02d {
-	background-image: url('../images/icons/static/cloudy-day-1.svg');
+	background-image: url(../images/icons/static/cloudy-day-1.svg);
 }
 /* clear (night) */
 .icon-01n {
-	background-image: url('../images/icons/static/night.svg');
+	background-image: url(../images/icons/static/night.svg);
 }
 /* sunny */
 .icon-01d {
-	background-image: url('../images/icons/static/day.svg');
+	background-image: url(../images/icons/static/day.svg);
 }
 
 
@@ -451,45 +451,45 @@ Animated Weather Icons
 
 /* thunder */
 .animated.icon-11d {
-	background-image: url('../images/icons/animated/thunder.svg');
+	background-image: url(../images/icons/animated/thunder.svg);
 }
 /* scattered showers */
 .animated.icon-10d {
-	background-image: url('../images/icons/animated/rainy-5.svg');
+	background-image: url(../images/icons/animated/rainy-5.svg);
 }
 /* showers */
 .animated.icon-09d {
-	background-image: url('../images/icons/animated/rainy-6.svg');
+	background-image: url(../images/icons/animated/rainy-6.svg);
 }
 /* heavy snow */
 .animated.icon-13d {
-	background-image: url('../images/icons/animated/snowy-6.svg');
+	background-image: url(../images/icons/animated/snowy-6.svg);
 }
 /* cloudy */
 .animated.icon-03d, .animated.icon-03n, .animated.icon-50d {
-	background-image: url('../images/icons/animated/cloudy.svg');
+	background-image: url(../images/icons/animated/cloudy.svg);
 }
 /* mostly cloudy (night) */
 .animated.icon-04n {
-	background-image: url('../images/icons/animated/cloudy-night-2.svg');
+	background-image: url(../images/icons/animated/cloudy-night-2.svg);
 }
 /* mostly cloudy (day) */
 .animated.icon-04d {
-	background-image: url('../images/icons/animated/cloudy-day-2.svg');
+	background-image: url(../images/icons/animated/cloudy-day-2.svg);
 }
 /* partly cloudy (night) */
 .animated.icon-02n {
-	background-image: url('../images/icons/animated/cloudy-night-1.svg');
+	background-image: url(../images/icons/animated/cloudy-night-1.svg);
 }
 /* partly cloudy (day) */
 .animated.icon-02d {
-	background-image: url('../images/icons/animated/cloudy-day-1.svg');
+	background-image: url(../images/icons/animated/cloudy-day-1.svg);
 }
 /* clear (night) */
 .animated.icon-01n {
-	background-image: url('../images/icons/animated/night.svg');
+	background-image: url(../images/icons/animated/night.svg);
 }
 /* sunny */
 .animated.icon-01d {
-	background-image: url('../images/icons/animated/day.svg');
+	background-image: url(../images/icons/animated/day.svg);
 }
