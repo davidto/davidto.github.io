@@ -124,6 +124,17 @@ body:before {
 	font-weight: bold;
 	letter-spacing: -0.5px;
 }
+.weather-condition p {
+	font-size: 0.7em;
+	font-weight: 100;
+	padding-top: 20px;
+}
+.weather-condition p + p {
+	padding-top: 10px;
+}
+.weather-condition p strong {
+	font-weight: 600;
+}
 
 /* Widget Styles */
 #wrapper-weather {
@@ -389,127 +400,96 @@ Condition codes - https://developer.yahoo.com/weather/documentation.html#codes
 ---------------*/
 
 /* thunder */
-.icon-0, .icon-1, .icon-2, .icon-3, .icon-4, .icon-37, .icon-38, .icon-39, .icon-45, .icon-47 {
+.icon-11d {
 	background-image: url('../images/icons/static/thunder.svg');
 }
-/* hail */
-.icon-5, .icon-6, .icon-7, .icon-8, .icon-10, .icon-17, .icon-18, .icon-35 {
-	background-image: url('../images/icons/static/rainy-7.svg');
-}
-/* drizzle */
-.icon-9 {
-	background-image: url('../images/icons/static/rainy-4.svg');
-}
 /* scattered showers */
-.icon-40 {
+.icon-10d {
 	background-image: url('../images/icons/static/rainy-5.svg');
 }
 /* showers */
-.icon-11, .icon-12 {
+.icon-09d {
 	background-image: url('../images/icons/static/rainy-6.svg');
 }
-/* snow flurries */
-.icon-13 {
-	background-image: url('../images/icons/static/snowy-4.svg');
-}
-/* snow showers */
-.icon-14, .icon-42, .icon-46 {
-	background-image: url('../images/icons/static/snowy-5.svg');
-}
 /* heavy snow */
-.icon-15, .icon-16, .icon-41, .icon-43 {
+.icon-13d {
 	background-image: url('../images/icons/static/snowy-6.svg');
 }
 /* cloudy */
-.icon-19, .icon-20, .icon-21, .icon-22, .icon-23, .icon-24, .icon-25, .icon-26, .icon-44 {
+.icon-03d, .icon-03n, .icon-50d {
 	background-image: url('../images/icons/static/cloudy.svg');
 }
 /* mostly cloudy (night) */
-.icon-27 {
+.icon-04n {
 	background-image: url('../images/icons/static/cloudy-night-2.svg');
 }
 /* mostly cloudy (day) */
-.icon-28 {
+.icon-04d {
 	background-image: url('../images/icons/static/cloudy-day-2.svg');
 }
 /* partly cloudy (night) */
-.icon-29 {
+.icon-02n {
 	background-image: url('../images/icons/static/cloudy-night-1.svg');
 }
 /* partly cloudy (day) */
-.icon-30 {
+.icon-02d {
 	background-image: url('../images/icons/static/cloudy-day-1.svg');
 }
 /* clear (night) */
-.icon-31, .icon-33 {
+.icon-01n {
 	background-image: url('../images/icons/static/night.svg');
 }
 /* sunny */
-.icon-32, .icon-34, .icon-36 {
+.icon-01d {
 	background-image: url('../images/icons/static/day.svg');
 }
+
 
 /*--------------- 
 Animated Weather Icons
 ---------------*/
 
 /* thunder */
-.animated#icon-0, .animated#icon-1, .animated#icon-2, .animated#icon-3, .animated#icon-4, .animated#icon-37, .animated#icon-38, .animated#icon-39, .animated#icon-45, .animated#icon-47 {
+.animated.icon-11d {
 	background-image: url('../images/icons/animated/thunder.svg');
 }
-/* hail */
-.animated#icon-5, .animated#icon-6, .animated#icon-7, .animated#icon-8, .animated#icon-10, .animated#icon-17, .animated#icon-18, .animated#icon-35 {
-	background-image: url('../images/icons/animated/rainy-7.svg');
-}
-/* drizzle */
-.animated#icon-9 {
-	background-image: url('../images/icons/animated/rainy-4.svg');
-}
 /* scattered showers */
-.animated#icon-40 {
+.animated.icon-10d {
 	background-image: url('../images/icons/animated/rainy-5.svg');
 }
 /* showers */
-.animated#icon-11, .animated#icon-12 {
+.animated.icon-09d {
 	background-image: url('../images/icons/animated/rainy-6.svg');
 }
-/* snow flurries */
-.animated#icon-13 {
-	background-image: url('../images/icons/animated/snowy-4.svg');
-}
-/* snow showers */
-.animated#icon-14, .animated#icon-42, .animated#icon-46 {
-	background-image: url('../images/icons/animated/snowy-5.svg');
-}
 /* heavy snow */
-.animated#icon-15, .animated#icon-16, .animated#icon-41, .animated#icon-43 {
+.animated.icon-13d {
 	background-image: url('../images/icons/animated/snowy-6.svg');
 }
 /* cloudy */
-.animated#icon-19, .animated#icon-20, .animated#icon-21, .animated#icon-22, .animated#icon-23, .animated#icon-24, .animated#icon-25, .animated#icon-26, .animated#icon-44 {
+.animated.icon-03d, .animated.icon-03n, .animated.icon-50d {
 	background-image: url('../images/icons/animated/cloudy.svg');
 }
 /* mostly cloudy (night) */
-.animated#icon-27 {
+.animated.icon-04n {
 	background-image: url('../images/icons/animated/cloudy-night-2.svg');
 }
 /* mostly cloudy (day) */
-.animated#icon-28 {
+.animated.icon-04d {
 	background-image: url('../images/icons/animated/cloudy-day-2.svg');
 }
 /* partly cloudy (night) */
-.animated#icon-29 {
+.animated.icon-02n {
 	background-image: url('../images/icons/animated/cloudy-night-1.svg');
 }
 /* partly cloudy (day) */
-.animated#icon-30 {
+.animated.icon-02d {
 	background-image: url('../images/icons/animated/cloudy-day-1.svg');
 }
 /* clear (night) */
-.animated#icon-31, .animated#icon-33 {
+.animated.icon-01n {
 	background-image: url('../images/icons/animated/night.svg');
 }
 /* sunny */
-.animated#icon-32, .animated#icon-34, .animated#icon-36 {
+.animated.icon-01d {
 	background-image: url('../images/icons/animated/day.svg');
 }

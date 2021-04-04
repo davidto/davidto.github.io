@@ -1,7 +1,10 @@
 // ProntoWeather Forecast Application that's powered by the Yahoo Weather API and features the ability to retrieve weather based on current location or search.
 // Designed and developed by David To
-
+// v2.0
 const prontoWeather = {};
+
+// add apiKey here
+prontoWeather.apiKey = apiKey;
 
 prontoWeather.location = '';
 
@@ -27,6 +30,9 @@ prontoWeather.displayModal = (id, display) => {
 		prontoWeather.addAnimation($(`${id}.show`), 'zoomOutDown', display);
 	} else {
 		prontoWeather.addAnimation($(`${id}.hide`), 'zoomInUp', display);
+		if (id = '#location-settings') {
+			$(`${id}`).find('#inputPlace').focus();
+		}
 	};
 
 };
@@ -38,7 +44,7 @@ prontoWeather.getLocation = () => {
 	})
 	.then((position) => {
 		// console.log(prontoWeather.location);
-		prontoWeather.location = '(' + position.coords.latitude + ', ' + position.coords.longitude + ')';
+		prontoWeather.location = 'lat=' + position.coords.latitude + '&lon=' + position.coords.longitude;
 		prontoWeather.getWeather();
 	})
 	.catch((err) => {
@@ -55,30 +61,35 @@ prontoWeather.displayWeather = (weather) => {
 	// Current Weather
 
 	const widget = $('.weather-widget');
-	widget.find('.weather-icon').attr('id', 'icon-' + weather.item.condition.code);
-	widget.find('.weather-condition').text(weather.item.condition.text);
-	widget.find('.temp .temp-int').text(weather.item.condition.temp);
-	widget.find('.temp .unit').text(weather.units.temperature);
-	widget.find('.city-name').text(weather.location.city + ', ' + weather.location.region);
-	$('.date-time').text(weather.item.condition.date);
+	widget.find('.weather-icon').addClass('icon-' + weather.weather[0].icon);
+	widget.find('.weather-condition').text(weather.weather[0].main);
+	widget.find('.temp .temp-int').text(weather.main.temp);
+	widget.find('.temp .unit').text('c');
+	widget.find('.city-name').text(weather.name + ', ' + weather.sys.country);
+	const feelsLikeHtml = $("<p/>").append(`Feels Like <strong>${weather.main.feels_like}°c</strong>`);
+	const highLow = $("<p/>").append(`<i class="fa fa-arrow-up" aria-label="High: "></i> <strong>${weather.main.temp_max}°c</strong> &nbsp;<i class="fa fa-arrow-down" aria-label="Low: "></i> <strong>${weather.main.temp_min}°c</strong>`);
+	widget.find('.weather-condition').append(feelsLikeHtml, highLow);
+	const timeData = new Date(weather.dt * 1000).toLocaleString();
+	$('.date-time').text(timeData);
+
 
 	// 10 Day Forcast
 
-	$('.weather-forecast').empty();
+	// $('.weather-forecast').empty();
 
-	const forcastArr = weather.item.forecast.reverse();
+	// const forcastArr = weather.item.forecast.reverse();
 
-	// console.log(forcastArr);
+	// // console.log(forcastArr);
 
-	forcastArr.forEach(function(forecaseDay){
-		const container = $('<div>').addClass('day');
-		const heading = $('<h3>').html(forecaseDay.day + ' ' + forecaseDay.date.slice(0, 2));
-		const weatherIcon = $('<div>').addClass('wrapper-weather-icon').append($('<div>').addClass('weather-icon icon-' + forecaseDay.code));
-		const tempHigh = $('<span>').addClass('temp-high').text(forecaseDay.high);
-		const tempLow = $('<span>').addClass('temp-low').text(forecaseDay.low);
-		const tempAll = $('<p>').addClass('temp-all').append(tempHigh, tempLow);
-		$('.weather-forecast').prepend(container.append(heading, weatherIcon, tempAll));
-	});
+	// forcastArr.forEach(function(forecaseDay){
+	// 	const container = $('<div>').addClass('day');
+	// 	const heading = $('<h3>').html(forecaseDay.day + ' ' + forecaseDay.date.slice(0, 2));
+	// 	const weatherIcon = $('<div>').addClass('wrapper-weather-icon').append($('<div>').addClass('weather-icon icon-' + forecaseDay.code));
+	// 	const tempHigh = $('<span>').addClass('temp-high').text(forecaseDay.high);
+	// 	const tempLow = $('<span>').addClass('temp-low').text(forecaseDay.low);
+	// 	const tempAll = $('<p>').addClass('temp-all').append(tempHigh, tempLow);
+	// 	$('.weather-forecast').prepend(container.append(heading, weatherIcon, tempAll));
+	// });
 
 	$('#wrapper-weather').show();
 	prontoWeather.displayModal('#location-settings', 'hide');
@@ -86,35 +97,46 @@ prontoWeather.displayWeather = (weather) => {
 
 };
 
-prontoWeather.getWeather = () => {
-
+prontoWeather.getWeather = (manualSearch = false) => {
+	let apiUrl = `https://api.openweathermap.org/data/2.5/weather?${prontoWeather.location}&appid=${prontoWeather.apiKey}&units=metric`;
+	if (manualSearch) {
+		apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${prontoWeather.location}&appid=${prontoWeather.apiKey}&units=metric`;
+	}
 	$.ajax({
-		url: `https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="${prontoWeather.location}") and u="c"`,
+		url: apiUrl,
 		method: 'GET',
 		dataType: 'json',
 		data: {
 			format: 'json'
-		}
-	})
-	.then(function(res){
-		// console.log(res);
-		if (!res.query.results) {
-			$('#loading.animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+		},
+		success: function(data, textStatus, XMLHttpRequest){
+			console.log(data);
+			if (data) {
+				$('.error-msg').removeClass('show');
+				prontoWeather.displayWeather(data);
+			}
+		},
+		error:function (xhr, ajaxOptions, thrownError){
+			if(xhr) {
 				$('.error-msg').addClass('show');
+				prontoWeather.displayModal('#location-settings', 'show');
 				prontoWeather.displayModal('#loading', 'hide');
-				$('#loading.animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-					prontoWeather.displayModal('#location-settings', 'show');
-				});
-			});
-		} else {
-			$('.error-msg').removeClass('show');
-			prontoWeather.displayWeather(res.query.results.channel);
+			}
+
 		}
-	})
-	.catch(function(err){
-		prontoWeather.displayModal('#location-settings', 'show');
-		prontoWeather.displayModal('#loading', 'hide');
 	});
+	// .then(function(res){
+	// 	console.log(res);
+	// 	$('.error-msg').removeClass('show');
+	// 	prontoWeather.displayWeather(res);
+	// })
+	// .catch(function(err){
+	// 	if(err) {
+	// 		console.log(err);
+	// 		prontoWeather.displayModal('#loading', 'hide');
+	// 		prontoWeather.displayModal('#location-settings', 'show');
+	// 	}
+	// });
 
 };
 
@@ -137,9 +159,7 @@ prontoWeather.init = () => {
 	$('#inputAddress').on('submit', function(e){
 		e.preventDefault();
 		prontoWeather.location = $('#inputPlace').val();
-		prontoWeather.displayModal('#location-settings', 'hide');
-		prontoWeather.displayModal('#loading', 'show');
-		prontoWeather.getWeather();
+		prontoWeather.getWeather(true);
 		// console.log(prontoWeather.location);
 		$('#inputPlace').val('');
 	});

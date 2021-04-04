@@ -6,7 +6,8 @@
 	<title>ProntoWeather</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/animate.min.css">
-	<link rel="stylesheet" href="css/style.min.css">
+	<!-- <link rel="stylesheet" href="css/style.min.css"> -->
+	<link rel="stylesheet" href="css/style.css?ver=2.0">
 </head>
 <body>
 	<body>
@@ -19,11 +20,11 @@
 		</div>
 		<div id="location-settings" class="overlay hide">
 			<div class="container">
-				<h2>Enter your city and region or postal code</h2>
+				<h2>Enter your city and country</h2>
 				<form id="inputAddress">
 					<div class="input-group">
 						<div class="group-item">
-							<input id="inputPlace" type="text" placeholder="e.g. Toronto, ON or M4S 1Z2" required>
+							<input id="inputPlace" type="text" placeholder="e.g. Toronto, Canada" required>
 						</div>
 						<div class="group-item">
 							<input id="inputAddressSubmit" class="btn input-group-btn" type="submit" value="Search">
@@ -33,7 +34,7 @@
 						</div>
 					</div>
 				</form>
-				<div class="error-msg">Sorry, we're unable to find your location. Please enter a valid city and region or postal code.</div>
+				<div class="error-msg">Sorry, we're unable to find your location. Please enter a valid city and country.</div>
 			</div>
 		</div>	
 		<div id="wrapper-weather">	
@@ -59,25 +60,25 @@
 					</div>
 				</div>
 				<div class="widget weather-weekly">
-					<div class="widget-title">
+					<!-- <div class="widget-title">
 						<h3>10 Day Forecast</h3>
 					</div>
 					<div class="weather-forecast">
 						<div class="clear"></div>
-					</div>
+					</div> -->
 					<p class="weather-update">Last Updated: <span class="date-time"></span></p>
 					<div class="clear"></div>
 				</div>
 				<div class="footer">
 					<span>Designed and Developed by <a target="_blank" href="https://github.com/davidto">David To</a></span>
-					<a class="credit" href="https://www.yahoo.com/?ilc=401" target="_blank"><img src="https://poweredby.yahoo.com/white.png" width="134" height="29"/></a>
 				</div>
 			</div>
 		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src="js/app.min.js"></script>
+		<script src="js/config.js?ver=1.0"></script>
+		<script src="js/app.min.js?ver=2.0"></script>
 		<!-- AMCHARTS weather icons - https://www.amcharts.com/free-animated-svg-weather-icons/ -->
 	</body>
 </html>
-<!-- Designed and developed by David To -->
+<!-- Designed and developed by David To - Toronto, Canada -->
