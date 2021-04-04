@@ -161,13 +161,11 @@ body:before {
 	color: rgba(146, 193, 246, 1);	
 }
 .weather-widget .widget-content {
-	display: table;
+	display: flex;
+	align-items: center;
 	width: 100%;
 }
 .weather-widget .col-6 {
-	display: table-cell;
-	float: none;
-	vertical-align: middle;
 }
 .wrapper-weather-icon {
 	margin: -5%;
@@ -361,6 +359,9 @@ input[type="text"]:focus {
 
 /* Media Queries */
 @media screen and (max-width: 700px) {
+	.weather-content {
+		padding-top: 16px;
+	}
 	.day {
 		padding-left: 1%;
 	    padding-right: 1%;
