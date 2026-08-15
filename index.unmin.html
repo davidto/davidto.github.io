@@ -173,30 +173,38 @@
 <a id="to-top" href="#home" aria-label="Back to top">&uarr;</a>
 
 <script>
-  // Hero: copy travels with the scroll (pinned to viewport) until it reaches the bottom of the hero section, then scrolls away with it. 
-  // Fades through the journey. Background drifts at half scroll-speed for parallax depth.
+  // Hero: copy travels with the scroll, but on small screens it moves less and fades more gently for smoother mobile motion.
   const hero = document.getElementById('home');
   const bg = hero.querySelector('.hero-bg');
   const content = hero.querySelector('.hero-content');
   let ticking = false;
 
+  const isMobile = () => window.matchMedia('(max-width: 600px)').matches;
+
   const updateHero = () => {
-    const heroHeight = hero.offsetHeight;
-    const scrolled = window.scrollY;
-    const clamped = Math.min(Math.max(scrolled, 0), heroHeight);
-    const progress = clamped / heroHeight;
-    content.style.opacity = Math.max(0, 1 - progress * 1.6);
-    content.style.transform = `translate3d(0,${clamped}px,0)`;
-    bg.style.transform = `translate3d(0,${scrolled * 0.5}px,0)`;
+    const heroHeight = Math.max(hero.offsetHeight, 1);
+    const scrolled = window.scrollY || window.pageYOffset || 0;
+    const mobile = isMobile();
+    const progress = Math.min(Math.max(scrolled / heroHeight, 0), 1);
+    const fadeStrength = mobile ? 1.1 : 1.4;
+    const yOffset = mobile ? 0.35 : 0.55;
+    const bgOffset = mobile ? 0.25 : 0.5;
+
+    content.style.opacity = Math.max(0, 1 - progress * fadeStrength);
+    content.style.transform = `translate3d(0,${Math.min(scrolled * yOffset, heroHeight * 0.35)}px,0)`;
+    bg.style.transform = `translate3d(0,${scrolled * bgOffset}px,0)`;
     ticking = false;
   };
 
-  window.addEventListener('scroll', () => {
+  const requestHeroUpdate = () => {
     if (!ticking) {
       window.requestAnimationFrame(updateHero);
       ticking = true;
     }
-  }, { passive: true });
+  };
+
+  window.addEventListener('scroll', requestHeroUpdate, { passive: true });
+  window.addEventListener('resize', requestHeroUpdate, { passive: true });
   updateHero();
 
   // Back-to-top button visibility

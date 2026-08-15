@@ -110,6 +110,8 @@ img {
   background-size: cover;
   background-repeat: no-repeat;
   will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   z-index: 0;
 }
 
@@ -127,7 +129,9 @@ img {
   z-index: 2;
   padding: 0 30px;
   max-width: 900px;
-  will-change: opacity;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .hero h1 {
